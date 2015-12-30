@@ -1,0 +1,10 @@
+﻿Instrucciones de uso del ejecutable de utilerias de las aplicaciones de MyM.
+Ingrese la acción a realizar después del ejecutable, ejemplo: 
+
+"MyMUtileriasGenericas.exe ayuda"
+
+Una vez haya ingresado la acción a realizar, se visualizará el menú de opciones que contiene.
+Para visualizar la lista de acciones que tiene este ejecutable coloque 
+
+"MyMUtileriasGenericas.exe acciones"
+
