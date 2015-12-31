@@ -78,6 +78,13 @@ namespace MyMUtileriasGenericas
             else
                 Console.WriteLine(ProcesaDatosCD.CifraTextoEnDES(textoOriginal, password));
             Console.WriteLine();
+            Console.WriteLine("Texto cifrado en formato hexadecimal:");
+            Console.WriteLine();
+            if (string.IsNullOrEmpty(password))
+                Console.WriteLine(ProcesaDatosCD.FormatoHexadecimal(ProcesaDatosCD.CifraTextoEnDES(textoOriginal)));
+            else
+                Console.WriteLine(ProcesaDatosCD.FormatoHexadecimal(ProcesaDatosCD.CifraTextoEnDES(textoOriginal,password)));
+            Console.WriteLine();
         }
 
         private static void DescifraTextoConDES(string textoCifrado,string password)
@@ -90,6 +97,10 @@ namespace MyMUtileriasGenericas
                 Console.WriteLine(ProcesaDatosCD.DescifraTextoDES(textoCifrado));
             else
                 Console.WriteLine(ProcesaDatosCD.DescifraTextoDES(textoCifrado, password));
+            Console.WriteLine();
+            Console.WriteLine("Texto descifrado desde el formato hexadecimal:");
+            Console.WriteLine();
+            
             Console.WriteLine();
         }
 

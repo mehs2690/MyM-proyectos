@@ -179,5 +179,55 @@ namespace MyMUtileriasGenericas.Seguridad
             }
             return resultado;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sCipherText"></param>
+        /// <returns></returns>
+        public static string FormatoHexadecimal(string sCipherText)
+        {
+            string resultado = string.Empty;
+            try
+            {
+                char[] letras = sCipherText.ToCharArray();
+                StringBuilder sb = new StringBuilder();
+                foreach (char item in letras)
+                {
+                    int iValorNumerico = Convert.ToInt32(item);
+                    string sHexaSalida = string.Format("{0:X}", iValorNumerico);
+                    sb.Append(sHexaSalida);
+                }
+                resultado = sb.ToString();            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return resultado;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="textoHexadecimal"></param>
+        /// <returns></returns>
+        public static string DesformateaHexadecimal(string textoHexadecimal)
+        {
+            string resultado = string.Empty;
+            try
+            {
+                char[] numeros = textoHexadecimal.ToCharArray();
+                StringBuilder sb = new StringBuilder();
+                foreach (char item in numeros)
+                {
+                    int iValor = Convert.ToInt32(item.ToString(), 16);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return resultado;
+        }
     }
 }
