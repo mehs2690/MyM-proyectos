@@ -218,10 +218,19 @@ namespace MyMUtileriasGenericas.Seguridad
             {
                 char[] numeros = textoHexadecimal.ToCharArray();
                 StringBuilder sb = new StringBuilder();
-                foreach (char item in numeros)
+                for (int i = 0; i < numeros.Length; i++)
                 {
-                    int iValor = Convert.ToInt32(item.ToString(), 16);
+                    int valor = 0;
+                    if ((i + 1) < numeros.Length)
+                    {
+                        valor = Convert.ToInt32(string.Format("{0}{1}",
+                                                   numeros[i].ToString(),
+                                                   numeros[i + 1].ToString()), 16);
+                        sb.Append((char)valor);
+                    }
+                    i++;
                 }
+                resultado = sb.ToString();
             }
             catch (Exception e)
             {

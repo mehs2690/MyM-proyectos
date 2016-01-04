@@ -71,5 +71,21 @@ namespace MyMUtileriasGenericas.AccesoDatos
                     EvaluaTipoOperacion(t);
             }
         }
+
+        /// <summary>
+        /// Realiza la operación CRUD dentro de una transacción
+        /// </summary>
+        /// <param name="operacion">objeto genérico para las transacciones</param>
+        public void EjecutaOperacionEnTransaccion(TransaccionGenerica operacion)
+        {
+            try
+            {
+                EvaluaTipoOperacion(operacion);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
