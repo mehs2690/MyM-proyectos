@@ -1,0 +1,62 @@
+body{
+    padding:40px 0px 40px 0px;
+    background-color:#0099cc;
+    font-family:Arial;
+}
+
+
+.inicio{
+	border: 2px solid white;
+	border-radius:30px;
+    cursor:pointer;
+}
+
+.inicio:hover{
+    border: 4px solid #ffff4a;
+    border-radius: 30px;
+    color:#ffff4a;
+}
+
+.formulario{
+    border: 3px solid white;
+    border-radius:10px;
+    margin-top:-10px;
+    padding:10px 10px 10px 10px;
+}
+
+.texto-centrado{
+    text-align:justify;
+}
+
+.texto-grande{
+    font-size: 18px;
+}
+
+section{
+    height:100%;
+}
+
+.section-desktopimg{
+    background-image: url("../content/imgs/coffee-laptop.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+.section-white{
+    background-color:white;
+    color:#383838;
+}
+
+.section-lightBlue{
+    background-color: #6adaff;
+    color:#004782;
+}
+
+.panel-dark{
+    color:white;
+    margin-top: 30px;
+    border-radius:10px;
+    padding:10px 10px 10px 10px;
+    background-color: rgba(56,56,56, 0.4);
+}
