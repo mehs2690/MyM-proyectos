@@ -112,6 +112,9 @@ namespace MyMUtileriasGenericas
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
+            string logPath= Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "System.Mym.Utilerias.exe.config");
+            log4net.Config.XmlConfigurator.Configure(new FileInfo(logPath));
+
             if (args.Length <= 0)
             {
                 CreaInstrucciones();

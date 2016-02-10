@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace MyMUtileriasGenericas.Seguridad
         private const string SALTKEY = "S@LT_KEY";
         private const string VIKEY = "@1B2c3D4e5F6g7H8";
         private static byte[] bytes = ASCIIEncoding.ASCII.GetBytes("megaloma");
+        private static readonly ILog log = LogManager.GetLogger(typeof(ProcesaDatosCD));
 
         /// <summary>
         /// Método que digiere la cadena de caracteres
@@ -63,6 +65,7 @@ namespace MyMUtileriasGenericas.Seguridad
         /// <returns></returns>
         public static string CifraTextoEnDES(string textoOriginal)
         {
+            log.Info("Ingresa a CifraTextoEnDES");
             string resultado = string.Empty;
             try
             {
@@ -82,8 +85,11 @@ namespace MyMUtileriasGenericas.Seguridad
             }
             catch (Exception e)
             {
+                log.Error("error en CifraTextoEnDES. ", e);
                 throw e;
             }
+            log.Info(string.Format("resultado del método CifraTextoEnDES: {0}", resultado));
+            log.Info("Termina el método CifraTextoEnDES");
             return resultado;
         }
 
