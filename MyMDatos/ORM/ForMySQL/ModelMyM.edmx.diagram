@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7f237b7c3ebd427db80c13ca69fdb07e" Name="Diagram1">
+        <EntityTypeShape EntityType="mymModel.mym_academia" Width="1.5" PointX="3" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_cat_empresa" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_cat_estatus" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_cat_puesto" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_cat_tipo_academia" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_cat_tipo_comunicacion" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_cat_tipo_direccion" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_cat_tipo_persona" Width="1.5" PointX="3.75" PointY="12.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_cat_titulo" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_comunicacion" Width="1.5" PointX="6" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_direccion" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_experiencia_laboral" Width="1.5" PointX="3" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_geo_ciudad" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_geo_codigo_postal" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_geo_estado" Width="1.5" PointX="3" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_geo_municipio" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_geo_pais" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_persona" Width="1.5" PointX="9.75" PointY="2.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_rel_persona_academia" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_rel_persona_comunicacion" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_rel_persona_direccion" Width="1.5" PointX="12" PointY="4.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_rel_persona_exp_laboral" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="mymModel.mym_rel_persona_tipo_persona" Width="1.5" PointX="6" PointY="6.75" IsExpanded="false" />
+        <AssociationConnector Association="mymModel.fk_acdm_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_acdm_tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_acdm_titulo" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_academia" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_exp_empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_cdd_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_cmncn_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_cp_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_drccn_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_estado_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_exp_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_mncp_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_acdm_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_cmncn_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_drccn_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_exp_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_tipo_estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_exp_puesto" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_cmncn_tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_drccn_tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_tipo_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_comunicacion" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_drccn_ciudad" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_drccn_cp" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_drccn_estado" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_drccn_municipio" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_drccn_pais" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_prsn_direccion" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_exp_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_cdd_estado" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_cdd_municipio" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_cdd_pais" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_cp_ciudad" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_cp_estado" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_cp_municipio" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_cp_pais" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_estado_pais" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_mncp_estado" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_mncp_pais" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_acdm_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_cmncn_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_drccn_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_persona" ManuallyRouted="false" />
+        <AssociationConnector Association="mymModel.fk_rel_prsn_exp_lbrl" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
