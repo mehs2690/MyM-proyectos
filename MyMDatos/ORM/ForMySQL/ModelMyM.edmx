@@ -1,0 +1,2349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="mymModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="mym_academia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="guid" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="tipo_academia" Type="int" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="date" Nullable="false" />
+          <Property Name="fecha_egreso" Type="date" />
+          <Property Name="titulo" Type="int" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_cat_empresa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="guid" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="homologaciones" Type="varchar" MaxLength="250" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_cat_estatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_cat_puesto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="puesto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="homologaciones" Type="varchar" MaxLength="250" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_cat_tipo_academia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_cat_tipo_comunicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_cat_tipo_direccion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_cat_tipo_persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_cat_titulo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_comunicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="guid" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="tipo_comunicacion" Type="int" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_direccion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="guid" Nullable="false" />
+          <Property Name="id_pais" Type="int" Nullable="false" />
+          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="id_municipio" Type="int" Nullable="false" />
+          <Property Name="id_ciudad" Type="int" Nullable="false" />
+          <Property Name="id_codigo_postal" Type="int" Nullable="false" />
+          <Property Name="calle" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="no_ext" Type="varchar" MaxLength="20" />
+          <Property Name="no_int" Type="varchar" MaxLength="20" />
+          <Property Name="tipo_direccion" Type="int" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_experiencia_laboral">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="guid" Nullable="false" />
+          <Property Name="empresa_laboro" Type="guid" Nullable="false" />
+          <Property Name="puesto" Type="int" Nullable="false" />
+          <Property Name="fecha_entrada" Type="date" Nullable="false" />
+          <Property Name="fecha_salida" Type="date" />
+          <Property Name="sueldo_entrada" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="sueldo_salida" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="descripcion_labores" Type="text" Nullable="false" />
+          <Property Name="motivo_salida" Type="text" Nullable="false" />
+          <Property Name="telefono_empresa" Type="varchar" MaxLength="20" />
+          <Property Name="jefe_inmediato" Type="varchar" MaxLength="200" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_geo_ciudad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pais" Type="int" Nullable="false" />
+          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="id_municipio" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="coordenadas" Type="varchar" MaxLength="100" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_geo_codigo_postal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pais" Type="int" Nullable="false" />
+          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="id_municipio" Type="int" Nullable="false" />
+          <Property Name="id_ciudad" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_geo_estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pais" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_geo_municipio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pais" Type="int" Nullable="false" />
+          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="coordenadas" Type="varchar" MaxLength="100" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_geo_pais">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="coordenadas" Type="varchar" MaxLength="200" />
+          <Property Name="region_geografica" Type="varchar" MaxLength="45" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="guid" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="apellido_paterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido_materno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+          <Property Name="sexo" Type="char" MaxLength="2" />
+          <Property Name="rfc" Type="varchar" MaxLength="15" />
+          <Property Name="curp" Type="varchar" MaxLength="20" />
+          <Property Name="fecha_creacion" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="ultima_modificacion" Type="datetime" Precision="0" />
+          <Property Name="url_fotografia" Type="varchar" MaxLength="250" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_rel_persona_academia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="guid" Nullable="false" />
+          <Property Name="id_persona" Type="guid" Nullable="false" />
+          <Property Name="id_academia" Type="guid" Nullable="false" />
+          <Property Name="fecha_alta_relacion" Type="date" Nullable="false" />
+          <Property Name="ultima_modificacion" Type="date" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_rel_persona_comunicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="guid" Nullable="false" />
+          <Property Name="id_persona" Type="guid" Nullable="false" />
+          <Property Name="id_comunicacion" Type="guid" Nullable="false" />
+          <Property Name="fecha_alta_relacion" Type="date" Nullable="false" />
+          <Property Name="ultima_modificacion" Type="date" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_rel_persona_direccion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="guid" Nullable="false" />
+          <Property Name="id_persona" Type="guid" Nullable="false" />
+          <Property Name="id_direccion" Type="guid" Nullable="false" />
+          <Property Name="fecha_alta_relacion" Type="date" Nullable="false" />
+          <Property Name="ultima_modificacion" Type="date" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_rel_persona_exp_laboral">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="guid" Nullable="false" />
+          <Property Name="id_persona" Type="guid" Nullable="false" />
+          <Property Name="id_exp_laboral" Type="guid" Nullable="false" />
+          <Property Name="fecha_alta_relacion" Type="date" Nullable="false" />
+          <Property Name="ultima_modificacion" Type="date" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mym_rel_persona_tipo_persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_persona" Type="guid" Nullable="false" />
+          <Property Name="id_tipo_persona" Type="int" Nullable="false" />
+          <Property Name="fecha_alta_relacion" Type="date" />
+          <Property Name="ultima_modificacion" Type="date" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_acdm_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_academia" Type="Self.mym_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_academia">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_acdm_tipo">
+          <End Role="mym_cat_tipo_academia" Type="Self.mym_cat_tipo_academia" Multiplicity="1" />
+          <End Role="mym_academia" Type="Self.mym_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_tipo_academia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_academia">
+              <PropertyRef Name="tipo_academia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_acdm_titulo">
+          <End Role="mym_cat_titulo" Type="Self.mym_cat_titulo" Multiplicity="1" />
+          <End Role="mym_academia" Type="Self.mym_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_titulo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_academia">
+              <PropertyRef Name="titulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cdd_estado">
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="1" />
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_ciudad">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cdd_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_ciudad">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cdd_municipio">
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="1" />
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_municipio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_ciudad">
+              <PropertyRef Name="id_municipio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cdd_pais">
+          <End Role="mym_geo_pais" Type="Self.mym_geo_pais" Multiplicity="1" />
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_ciudad">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cmncn_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_comunicacion" Type="Self.mym_comunicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_comunicacion">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cmncn_tipo">
+          <End Role="mym_cat_tipo_comunicacion" Type="Self.mym_cat_tipo_comunicacion" Multiplicity="1" />
+          <End Role="mym_comunicacion" Type="Self.mym_comunicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_tipo_comunicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_comunicacion">
+              <PropertyRef Name="tipo_comunicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cp_ciudad">
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="1" />
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_codigo_postal">
+              <PropertyRef Name="id_ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cp_estado">
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="1" />
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_codigo_postal">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cp_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_codigo_postal">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cp_municipio">
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="1" />
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_municipio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_codigo_postal">
+              <PropertyRef Name="id_municipio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cp_pais">
+          <End Role="mym_geo_pais" Type="Self.mym_geo_pais" Multiplicity="1" />
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_codigo_postal">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_ciudad">
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="id_ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_cp">
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_codigo_postal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="id_codigo_postal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_estado">
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_municipio">
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_municipio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="id_municipio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_pais">
+          <End Role="mym_geo_pais" Type="Self.mym_geo_pais" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_tipo">
+          <End Role="mym_cat_tipo_direccion" Type="Self.mym_cat_tipo_direccion" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_tipo_direccion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="tipo_direccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estado_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_estado">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estado_pais">
+          <End Role="mym_geo_pais" Type="Self.mym_geo_pais" Multiplicity="1" />
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_estado">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_exp_empresa">
+          <End Role="mym_cat_empresa" Type="Self.mym_cat_empresa" Multiplicity="1" />
+          <End Role="mym_experiencia_laboral" Type="Self.mym_experiencia_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_empresa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_experiencia_laboral">
+              <PropertyRef Name="empresa_laboro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_exp_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_experiencia_laboral" Type="Self.mym_experiencia_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_experiencia_laboral">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_exp_puesto">
+          <End Role="mym_cat_puesto" Type="Self.mym_cat_puesto" Multiplicity="1" />
+          <End Role="mym_experiencia_laboral" Type="Self.mym_experiencia_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_puesto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_experiencia_laboral">
+              <PropertyRef Name="puesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mncp_estado">
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="1" />
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_municipio">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mncp_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_municipio">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mncp_pais">
+          <End Role="mym_geo_pais" Type="Self.mym_geo_pais" Multiplicity="1" />
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_municipio">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_academia">
+          <End Role="mym_academia" Type="Self.mym_academia" Multiplicity="1" />
+          <End Role="mym_rel_persona_academia" Type="Self.mym_rel_persona_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_academia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_academia">
+              <PropertyRef Name="id_academia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_acdm_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_rel_persona_academia" Type="Self.mym_rel_persona_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_academia">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_acdm_persona">
+          <End Role="mym_persona" Type="Self.mym_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_academia" Type="Self.mym_rel_persona_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_academia">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_cmncn_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_rel_persona_comunicacion" Type="Self.mym_rel_persona_comunicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_comunicacion">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_cmncn_persona">
+          <End Role="mym_persona" Type="Self.mym_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_comunicacion" Type="Self.mym_rel_persona_comunicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_comunicacion">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_comunicacion">
+          <End Role="mym_comunicacion" Type="Self.mym_comunicacion" Multiplicity="1" />
+          <End Role="mym_rel_persona_comunicacion" Type="Self.mym_rel_persona_comunicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_comunicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_comunicacion">
+              <PropertyRef Name="id_comunicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_drccn_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_rel_persona_direccion" Type="Self.mym_rel_persona_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_direccion">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_drccn_persona">
+          <End Role="mym_persona" Type="Self.mym_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_direccion" Type="Self.mym_rel_persona_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_direccion">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_exp_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_rel_persona_exp_laboral" Type="Self.mym_rel_persona_exp_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_exp_laboral">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_exp_persona">
+          <End Role="mym_experiencia_laboral" Type="Self.mym_experiencia_laboral" Multiplicity="1" />
+          <End Role="mym_rel_persona_exp_laboral" Type="Self.mym_rel_persona_exp_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_experiencia_laboral">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_exp_laboral">
+              <PropertyRef Name="id_exp_laboral" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_persona">
+          <End Role="mym_persona" Type="Self.mym_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_tipo_persona" Type="Self.mym_rel_persona_tipo_persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_tipo_persona">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_prsn_direccion">
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="1" />
+          <End Role="mym_rel_persona_direccion" Type="Self.mym_rel_persona_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_direccion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_direccion">
+              <PropertyRef Name="id_direccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_prsn_exp_lbrl">
+          <End Role="mym_persona" Type="Self.mym_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_exp_laboral" Type="Self.mym_rel_persona_exp_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_exp_laboral">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_tipo_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_rel_persona_tipo_persona" Type="Self.mym_rel_persona_tipo_persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_tipo_persona">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_tipo_persona">
+          <End Role="mym_cat_tipo_persona" Type="Self.mym_cat_tipo_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_tipo_persona" Type="Self.mym_rel_persona_tipo_persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_tipo_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_tipo_persona">
+              <PropertyRef Name="id_tipo_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mymModelStoreContainer">
+          <EntitySet Name="mym_academia" EntityType="Self.mym_academia" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_cat_empresa" EntityType="Self.mym_cat_empresa" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_cat_estatus" EntityType="Self.mym_cat_estatus" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_cat_puesto" EntityType="Self.mym_cat_puesto" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_cat_tipo_academia" EntityType="Self.mym_cat_tipo_academia" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_cat_tipo_comunicacion" EntityType="Self.mym_cat_tipo_comunicacion" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_cat_tipo_direccion" EntityType="Self.mym_cat_tipo_direccion" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_cat_tipo_persona" EntityType="Self.mym_cat_tipo_persona" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_cat_titulo" EntityType="Self.mym_cat_titulo" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_comunicacion" EntityType="Self.mym_comunicacion" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_direccion" EntityType="Self.mym_direccion" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_experiencia_laboral" EntityType="Self.mym_experiencia_laboral" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_geo_ciudad" EntityType="Self.mym_geo_ciudad" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_geo_codigo_postal" EntityType="Self.mym_geo_codigo_postal" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_geo_estado" EntityType="Self.mym_geo_estado" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_geo_municipio" EntityType="Self.mym_geo_municipio" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_geo_pais" EntityType="Self.mym_geo_pais" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_persona" EntityType="Self.mym_persona" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_rel_persona_academia" EntityType="Self.mym_rel_persona_academia" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_rel_persona_comunicacion" EntityType="Self.mym_rel_persona_comunicacion" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_rel_persona_direccion" EntityType="Self.mym_rel_persona_direccion" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_rel_persona_exp_laboral" EntityType="Self.mym_rel_persona_exp_laboral" Schema="mym" store:Type="Tables" />
+          <EntitySet Name="mym_rel_persona_tipo_persona" EntityType="Self.mym_rel_persona_tipo_persona" Schema="mym" store:Type="Tables" />
+          <AssociationSet Name="fk_acdm_estatus" Association="Self.fk_acdm_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_academia" EntitySet="mym_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_acdm_tipo" Association="Self.fk_acdm_tipo">
+            <End Role="mym_cat_tipo_academia" EntitySet="mym_cat_tipo_academia" />
+            <End Role="mym_academia" EntitySet="mym_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_acdm_titulo" Association="Self.fk_acdm_titulo">
+            <End Role="mym_cat_titulo" EntitySet="mym_cat_titulo" />
+            <End Role="mym_academia" EntitySet="mym_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cdd_estado" Association="Self.fk_cdd_estado">
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cdd_estatus" Association="Self.fk_cdd_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cdd_municipio" Association="Self.fk_cdd_municipio">
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cdd_pais" Association="Self.fk_cdd_pais">
+            <End Role="mym_geo_pais" EntitySet="mym_geo_pais" />
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cmncn_estatus" Association="Self.fk_cmncn_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_comunicacion" EntitySet="mym_comunicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cmncn_tipo" Association="Self.fk_cmncn_tipo">
+            <End Role="mym_cat_tipo_comunicacion" EntitySet="mym_cat_tipo_comunicacion" />
+            <End Role="mym_comunicacion" EntitySet="mym_comunicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cp_ciudad" Association="Self.fk_cp_ciudad">
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cp_estado" Association="Self.fk_cp_estado">
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cp_estatus" Association="Self.fk_cp_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cp_municipio" Association="Self.fk_cp_municipio">
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cp_pais" Association="Self.fk_cp_pais">
+            <End Role="mym_geo_pais" EntitySet="mym_geo_pais" />
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_ciudad" Association="Self.fk_drccn_ciudad">
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_cp" Association="Self.fk_drccn_cp">
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_estado" Association="Self.fk_drccn_estado">
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_estatus" Association="Self.fk_drccn_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_municipio" Association="Self.fk_drccn_municipio">
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_pais" Association="Self.fk_drccn_pais">
+            <End Role="mym_geo_pais" EntitySet="mym_geo_pais" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_tipo" Association="Self.fk_drccn_tipo">
+            <End Role="mym_cat_tipo_direccion" EntitySet="mym_cat_tipo_direccion" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estado_estatus" Association="Self.fk_estado_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estado_pais" Association="Self.fk_estado_pais">
+            <End Role="mym_geo_pais" EntitySet="mym_geo_pais" />
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_exp_empresa" Association="Self.fk_exp_empresa">
+            <End Role="mym_cat_empresa" EntitySet="mym_cat_empresa" />
+            <End Role="mym_experiencia_laboral" EntitySet="mym_experiencia_laboral" />
+          </AssociationSet>
+          <AssociationSet Name="fk_exp_estatus" Association="Self.fk_exp_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_experiencia_laboral" EntitySet="mym_experiencia_laboral" />
+          </AssociationSet>
+          <AssociationSet Name="fk_exp_puesto" Association="Self.fk_exp_puesto">
+            <End Role="mym_cat_puesto" EntitySet="mym_cat_puesto" />
+            <End Role="mym_experiencia_laboral" EntitySet="mym_experiencia_laboral" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mncp_estado" Association="Self.fk_mncp_estado">
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mncp_estatus" Association="Self.fk_mncp_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mncp_pais" Association="Self.fk_mncp_pais">
+            <End Role="mym_geo_pais" EntitySet="mym_geo_pais" />
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_academia" Association="Self.fk_rel_academia">
+            <End Role="mym_academia" EntitySet="mym_academia" />
+            <End Role="mym_rel_persona_academia" EntitySet="mym_rel_persona_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_acdm_estatus" Association="Self.fk_rel_acdm_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_rel_persona_academia" EntitySet="mym_rel_persona_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_acdm_persona" Association="Self.fk_rel_acdm_persona">
+            <End Role="mym_persona" EntitySet="mym_persona" />
+            <End Role="mym_rel_persona_academia" EntitySet="mym_rel_persona_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_cmncn_estatus" Association="Self.fk_rel_cmncn_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_rel_persona_comunicacion" EntitySet="mym_rel_persona_comunicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_cmncn_persona" Association="Self.fk_rel_cmncn_persona">
+            <End Role="mym_persona" EntitySet="mym_persona" />
+            <End Role="mym_rel_persona_comunicacion" EntitySet="mym_rel_persona_comunicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_comunicacion" Association="Self.fk_rel_comunicacion">
+            <End Role="mym_comunicacion" EntitySet="mym_comunicacion" />
+            <End Role="mym_rel_persona_comunicacion" EntitySet="mym_rel_persona_comunicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_drccn_estatus" Association="Self.fk_rel_drccn_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_rel_persona_direccion" EntitySet="mym_rel_persona_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_drccn_persona" Association="Self.fk_rel_drccn_persona">
+            <End Role="mym_persona" EntitySet="mym_persona" />
+            <End Role="mym_rel_persona_direccion" EntitySet="mym_rel_persona_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_exp_estatus" Association="Self.fk_rel_exp_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_rel_persona_exp_laboral" EntitySet="mym_rel_persona_exp_laboral" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_exp_persona" Association="Self.fk_rel_exp_persona">
+            <End Role="mym_experiencia_laboral" EntitySet="mym_experiencia_laboral" />
+            <End Role="mym_rel_persona_exp_laboral" EntitySet="mym_rel_persona_exp_laboral" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_persona" Association="Self.fk_rel_persona">
+            <End Role="mym_persona" EntitySet="mym_persona" />
+            <End Role="mym_rel_persona_tipo_persona" EntitySet="mym_rel_persona_tipo_persona" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_prsn_direccion" Association="Self.fk_rel_prsn_direccion">
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+            <End Role="mym_rel_persona_direccion" EntitySet="mym_rel_persona_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_prsn_exp_lbrl" Association="Self.fk_rel_prsn_exp_lbrl">
+            <End Role="mym_persona" EntitySet="mym_persona" />
+            <End Role="mym_rel_persona_exp_laboral" EntitySet="mym_rel_persona_exp_laboral" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_tipo_estatus" Association="Self.fk_rel_tipo_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_rel_persona_tipo_persona" EntitySet="mym_rel_persona_tipo_persona" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_tipo_persona" Association="Self.fk_rel_tipo_persona">
+            <End Role="mym_cat_tipo_persona" EntitySet="mym_cat_tipo_persona" />
+            <End Role="mym_rel_persona_tipo_persona" EntitySet="mym_rel_persona_tipo_persona" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mymModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="mym_academia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo_academia" Type="Int32" Nullable="false" />
+          <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" />
+          <Property Name="fecha_egreso" Type="DateTime" />
+          <Property Name="titulo" Type="Int32" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_acdm_estatus" FromRole="mym_academia" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_cat_tipo_academia" Relationship="Self.fk_acdm_tipo" FromRole="mym_academia" ToRole="mym_cat_tipo_academia" />
+          <NavigationProperty Name="mym_cat_titulo" Relationship="Self.fk_acdm_titulo" FromRole="mym_academia" ToRole="mym_cat_titulo" />
+          <NavigationProperty Name="mym_rel_persona_academia" Relationship="Self.fk_rel_academia" FromRole="mym_academia" ToRole="mym_rel_persona_academia" />
+        </EntityType>
+        <EntityType Name="mym_cat_empresa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="homologaciones" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_experiencia_laboral" Relationship="Self.fk_exp_empresa" FromRole="mym_cat_empresa" ToRole="mym_experiencia_laboral" />
+        </EntityType>
+        <EntityType Name="mym_cat_estatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="mym_academia" Relationship="Self.fk_acdm_estatus" FromRole="mym_cat_estatus" ToRole="mym_academia" />
+          <NavigationProperty Name="mym_geo_ciudad" Relationship="Self.fk_cdd_estatus" FromRole="mym_cat_estatus" ToRole="mym_geo_ciudad" />
+          <NavigationProperty Name="mym_comunicacion" Relationship="Self.fk_cmncn_estatus" FromRole="mym_cat_estatus" ToRole="mym_comunicacion" />
+          <NavigationProperty Name="mym_geo_codigo_postal" Relationship="Self.fk_cp_estatus" FromRole="mym_cat_estatus" ToRole="mym_geo_codigo_postal" />
+          <NavigationProperty Name="mym_direccion" Relationship="Self.fk_drccn_estatus" FromRole="mym_cat_estatus" ToRole="mym_direccion" />
+          <NavigationProperty Name="mym_geo_estado" Relationship="Self.fk_estado_estatus" FromRole="mym_cat_estatus" ToRole="mym_geo_estado" />
+          <NavigationProperty Name="mym_experiencia_laboral" Relationship="Self.fk_exp_estatus" FromRole="mym_cat_estatus" ToRole="mym_experiencia_laboral" />
+          <NavigationProperty Name="mym_geo_municipio" Relationship="Self.fk_mncp_estatus" FromRole="mym_cat_estatus" ToRole="mym_geo_municipio" />
+          <NavigationProperty Name="mym_rel_persona_academia" Relationship="Self.fk_rel_acdm_estatus" FromRole="mym_cat_estatus" ToRole="mym_rel_persona_academia" />
+          <NavigationProperty Name="mym_rel_persona_comunicacion" Relationship="Self.fk_rel_cmncn_estatus" FromRole="mym_cat_estatus" ToRole="mym_rel_persona_comunicacion" />
+          <NavigationProperty Name="mym_rel_persona_direccion" Relationship="Self.fk_rel_drccn_estatus" FromRole="mym_cat_estatus" ToRole="mym_rel_persona_direccion" />
+          <NavigationProperty Name="mym_rel_persona_exp_laboral" Relationship="Self.fk_rel_exp_estatus" FromRole="mym_cat_estatus" ToRole="mym_rel_persona_exp_laboral" />
+          <NavigationProperty Name="mym_rel_persona_tipo_persona" Relationship="Self.fk_rel_tipo_estatus" FromRole="mym_cat_estatus" ToRole="mym_rel_persona_tipo_persona" />
+        </EntityType>
+        <EntityType Name="mym_cat_puesto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="puesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="homologaciones" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_experiencia_laboral" Relationship="Self.fk_exp_puesto" FromRole="mym_cat_puesto" ToRole="mym_experiencia_laboral" />
+        </EntityType>
+        <EntityType Name="mym_cat_tipo_academia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_academia" Relationship="Self.fk_acdm_tipo" FromRole="mym_cat_tipo_academia" ToRole="mym_academia" />
+        </EntityType>
+        <EntityType Name="mym_cat_tipo_comunicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_comunicacion" Relationship="Self.fk_cmncn_tipo" FromRole="mym_cat_tipo_comunicacion" ToRole="mym_comunicacion" />
+        </EntityType>
+        <EntityType Name="mym_cat_tipo_direccion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_direccion" Relationship="Self.fk_drccn_tipo" FromRole="mym_cat_tipo_direccion" ToRole="mym_direccion" />
+        </EntityType>
+        <EntityType Name="mym_cat_tipo_persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_rel_persona_tipo_persona" Relationship="Self.fk_rel_tipo_persona" FromRole="mym_cat_tipo_persona" ToRole="mym_rel_persona_tipo_persona" />
+        </EntityType>
+        <EntityType Name="mym_cat_titulo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_academia" Relationship="Self.fk_acdm_titulo" FromRole="mym_cat_titulo" ToRole="mym_academia" />
+        </EntityType>
+        <EntityType Name="mym_comunicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo_comunicacion" Type="Int32" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_cmncn_estatus" FromRole="mym_comunicacion" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_cat_tipo_comunicacion" Relationship="Self.fk_cmncn_tipo" FromRole="mym_comunicacion" ToRole="mym_cat_tipo_comunicacion" />
+          <NavigationProperty Name="mym_rel_persona_comunicacion" Relationship="Self.fk_rel_comunicacion" FromRole="mym_comunicacion" ToRole="mym_rel_persona_comunicacion" />
+        </EntityType>
+        <EntityType Name="mym_direccion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="id_pais" Type="Int32" Nullable="false" />
+          <Property Name="id_estado" Type="Int32" Nullable="false" />
+          <Property Name="id_municipio" Type="Int32" Nullable="false" />
+          <Property Name="id_ciudad" Type="Int32" Nullable="false" />
+          <Property Name="id_codigo_postal" Type="Int32" Nullable="false" />
+          <Property Name="calle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="no_ext" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="no_int" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_direccion" Type="Int32" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_drccn_estatus" FromRole="mym_direccion" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_cat_tipo_direccion" Relationship="Self.fk_drccn_tipo" FromRole="mym_direccion" ToRole="mym_cat_tipo_direccion" />
+          <NavigationProperty Name="mym_geo_ciudad" Relationship="Self.fk_drccn_ciudad" FromRole="mym_direccion" ToRole="mym_geo_ciudad" />
+          <NavigationProperty Name="mym_geo_codigo_postal" Relationship="Self.fk_drccn_cp" FromRole="mym_direccion" ToRole="mym_geo_codigo_postal" />
+          <NavigationProperty Name="mym_geo_estado" Relationship="Self.fk_drccn_estado" FromRole="mym_direccion" ToRole="mym_geo_estado" />
+          <NavigationProperty Name="mym_geo_municipio" Relationship="Self.fk_drccn_municipio" FromRole="mym_direccion" ToRole="mym_geo_municipio" />
+          <NavigationProperty Name="mym_geo_pais" Relationship="Self.fk_drccn_pais" FromRole="mym_direccion" ToRole="mym_geo_pais" />
+          <NavigationProperty Name="mym_rel_persona_direccion" Relationship="Self.fk_rel_prsn_direccion" FromRole="mym_direccion" ToRole="mym_rel_persona_direccion" />
+        </EntityType>
+        <EntityType Name="mym_experiencia_laboral">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="empresa_laboro" Type="Guid" Nullable="false" />
+          <Property Name="puesto" Type="Int32" Nullable="false" />
+          <Property Name="fecha_entrada" Type="DateTime" Nullable="false" />
+          <Property Name="fecha_salida" Type="DateTime" />
+          <Property Name="sueldo_entrada" Type="Decimal" Nullable="false" />
+          <Property Name="sueldo_salida" Type="Decimal" Nullable="false" />
+          <Property Name="descripcion_labores" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="motivo_salida" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono_empresa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="jefe_inmediato" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_empresa" Relationship="Self.fk_exp_empresa" FromRole="mym_experiencia_laboral" ToRole="mym_cat_empresa" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_exp_estatus" FromRole="mym_experiencia_laboral" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_cat_puesto" Relationship="Self.fk_exp_puesto" FromRole="mym_experiencia_laboral" ToRole="mym_cat_puesto" />
+          <NavigationProperty Name="mym_rel_persona_exp_laboral" Relationship="Self.fk_rel_exp_persona" FromRole="mym_experiencia_laboral" ToRole="mym_rel_persona_exp_laboral" />
+        </EntityType>
+        <EntityType Name="mym_geo_ciudad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pais" Type="Int32" Nullable="false" />
+          <Property Name="id_estado" Type="Int32" Nullable="false" />
+          <Property Name="id_municipio" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="coordenadas" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_cdd_estatus" FromRole="mym_geo_ciudad" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_direccion" Relationship="Self.fk_drccn_ciudad" FromRole="mym_geo_ciudad" ToRole="mym_direccion" />
+          <NavigationProperty Name="mym_geo_estado" Relationship="Self.fk_cdd_estado" FromRole="mym_geo_ciudad" ToRole="mym_geo_estado" />
+          <NavigationProperty Name="mym_geo_municipio" Relationship="Self.fk_cdd_municipio" FromRole="mym_geo_ciudad" ToRole="mym_geo_municipio" />
+          <NavigationProperty Name="mym_geo_pais" Relationship="Self.fk_cdd_pais" FromRole="mym_geo_ciudad" ToRole="mym_geo_pais" />
+          <NavigationProperty Name="mym_geo_codigo_postal" Relationship="Self.fk_cp_ciudad" FromRole="mym_geo_ciudad" ToRole="mym_geo_codigo_postal" />
+        </EntityType>
+        <EntityType Name="mym_geo_codigo_postal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pais" Type="Int32" Nullable="false" />
+          <Property Name="id_estado" Type="Int32" Nullable="false" />
+          <Property Name="id_municipio" Type="Int32" Nullable="false" />
+          <Property Name="id_ciudad" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_cp_estatus" FromRole="mym_geo_codigo_postal" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_direccion" Relationship="Self.fk_drccn_cp" FromRole="mym_geo_codigo_postal" ToRole="mym_direccion" />
+          <NavigationProperty Name="mym_geo_ciudad" Relationship="Self.fk_cp_ciudad" FromRole="mym_geo_codigo_postal" ToRole="mym_geo_ciudad" />
+          <NavigationProperty Name="mym_geo_estado" Relationship="Self.fk_cp_estado" FromRole="mym_geo_codigo_postal" ToRole="mym_geo_estado" />
+          <NavigationProperty Name="mym_geo_municipio" Relationship="Self.fk_cp_municipio" FromRole="mym_geo_codigo_postal" ToRole="mym_geo_municipio" />
+          <NavigationProperty Name="mym_geo_pais" Relationship="Self.fk_cp_pais" FromRole="mym_geo_codigo_postal" ToRole="mym_geo_pais" />
+        </EntityType>
+        <EntityType Name="mym_geo_estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pais" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_estado_estatus" FromRole="mym_geo_estado" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_direccion" Relationship="Self.fk_drccn_estado" FromRole="mym_geo_estado" ToRole="mym_direccion" />
+          <NavigationProperty Name="mym_geo_ciudad" Relationship="Self.fk_cdd_estado" FromRole="mym_geo_estado" ToRole="mym_geo_ciudad" />
+          <NavigationProperty Name="mym_geo_codigo_postal" Relationship="Self.fk_cp_estado" FromRole="mym_geo_estado" ToRole="mym_geo_codigo_postal" />
+          <NavigationProperty Name="mym_geo_pais" Relationship="Self.fk_estado_pais" FromRole="mym_geo_estado" ToRole="mym_geo_pais" />
+          <NavigationProperty Name="mym_geo_municipio" Relationship="Self.fk_mncp_estado" FromRole="mym_geo_estado" ToRole="mym_geo_municipio" />
+        </EntityType>
+        <EntityType Name="mym_geo_municipio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pais" Type="Int32" Nullable="false" />
+          <Property Name="id_estado" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="coordenadas" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_mncp_estatus" FromRole="mym_geo_municipio" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_direccion" Relationship="Self.fk_drccn_municipio" FromRole="mym_geo_municipio" ToRole="mym_direccion" />
+          <NavigationProperty Name="mym_geo_ciudad" Relationship="Self.fk_cdd_municipio" FromRole="mym_geo_municipio" ToRole="mym_geo_ciudad" />
+          <NavigationProperty Name="mym_geo_codigo_postal" Relationship="Self.fk_cp_municipio" FromRole="mym_geo_municipio" ToRole="mym_geo_codigo_postal" />
+          <NavigationProperty Name="mym_geo_estado" Relationship="Self.fk_mncp_estado" FromRole="mym_geo_municipio" ToRole="mym_geo_estado" />
+          <NavigationProperty Name="mym_geo_pais" Relationship="Self.fk_mncp_pais" FromRole="mym_geo_municipio" ToRole="mym_geo_pais" />
+        </EntityType>
+        <EntityType Name="mym_geo_pais">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="coordenadas" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="region_geografica" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_direccion" Relationship="Self.fk_drccn_pais" FromRole="mym_geo_pais" ToRole="mym_direccion" />
+          <NavigationProperty Name="mym_geo_ciudad" Relationship="Self.fk_cdd_pais" FromRole="mym_geo_pais" ToRole="mym_geo_ciudad" />
+          <NavigationProperty Name="mym_geo_codigo_postal" Relationship="Self.fk_cp_pais" FromRole="mym_geo_pais" ToRole="mym_geo_codigo_postal" />
+          <NavigationProperty Name="mym_geo_estado" Relationship="Self.fk_estado_pais" FromRole="mym_geo_pais" ToRole="mym_geo_estado" />
+          <NavigationProperty Name="mym_geo_municipio" Relationship="Self.fk_mncp_pais" FromRole="mym_geo_pais" ToRole="mym_geo_municipio" />
+        </EntityType>
+        <EntityType Name="mym_persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido_paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido_materno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" />
+          <Property Name="sexo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="rfc" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="curp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" />
+          <Property Name="ultima_modificacion" Type="DateTime" />
+          <Property Name="url_fotografia" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_rel_persona_academia" Relationship="Self.fk_rel_acdm_persona" FromRole="mym_persona" ToRole="mym_rel_persona_academia" />
+          <NavigationProperty Name="mym_rel_persona_comunicacion" Relationship="Self.fk_rel_cmncn_persona" FromRole="mym_persona" ToRole="mym_rel_persona_comunicacion" />
+          <NavigationProperty Name="mym_rel_persona_direccion" Relationship="Self.fk_rel_drccn_persona" FromRole="mym_persona" ToRole="mym_rel_persona_direccion" />
+          <NavigationProperty Name="mym_rel_persona_tipo_persona" Relationship="Self.fk_rel_persona" FromRole="mym_persona" ToRole="mym_rel_persona_tipo_persona" />
+          <NavigationProperty Name="mym_rel_persona_exp_laboral" Relationship="Self.fk_rel_prsn_exp_lbrl" FromRole="mym_persona" ToRole="mym_rel_persona_exp_laboral" />
+        </EntityType>
+        <EntityType Name="mym_rel_persona_academia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="id_persona" Type="Guid" Nullable="false" />
+          <Property Name="id_academia" Type="Guid" Nullable="false" />
+          <Property Name="fecha_alta_relacion" Type="DateTime" Nullable="false" />
+          <Property Name="ultima_modificacion" Type="DateTime" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_academia" Relationship="Self.fk_rel_academia" FromRole="mym_rel_persona_academia" ToRole="mym_academia" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_rel_acdm_estatus" FromRole="mym_rel_persona_academia" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_persona" Relationship="Self.fk_rel_acdm_persona" FromRole="mym_rel_persona_academia" ToRole="mym_persona" />
+        </EntityType>
+        <EntityType Name="mym_rel_persona_comunicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="id_persona" Type="Guid" Nullable="false" />
+          <Property Name="id_comunicacion" Type="Guid" Nullable="false" />
+          <Property Name="fecha_alta_relacion" Type="DateTime" Nullable="false" />
+          <Property Name="ultima_modificacion" Type="DateTime" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_rel_cmncn_estatus" FromRole="mym_rel_persona_comunicacion" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_comunicacion" Relationship="Self.fk_rel_comunicacion" FromRole="mym_rel_persona_comunicacion" ToRole="mym_comunicacion" />
+          <NavigationProperty Name="mym_persona" Relationship="Self.fk_rel_cmncn_persona" FromRole="mym_rel_persona_comunicacion" ToRole="mym_persona" />
+        </EntityType>
+        <EntityType Name="mym_rel_persona_direccion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="id_persona" Type="Guid" Nullable="false" />
+          <Property Name="id_direccion" Type="Guid" Nullable="false" />
+          <Property Name="fecha_alta_relacion" Type="DateTime" Nullable="false" />
+          <Property Name="ultima_modificacion" Type="DateTime" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_rel_drccn_estatus" FromRole="mym_rel_persona_direccion" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_direccion" Relationship="Self.fk_rel_prsn_direccion" FromRole="mym_rel_persona_direccion" ToRole="mym_direccion" />
+          <NavigationProperty Name="mym_persona" Relationship="Self.fk_rel_drccn_persona" FromRole="mym_rel_persona_direccion" ToRole="mym_persona" />
+        </EntityType>
+        <EntityType Name="mym_rel_persona_exp_laboral">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="id_persona" Type="Guid" Nullable="false" />
+          <Property Name="id_exp_laboral" Type="Guid" Nullable="false" />
+          <Property Name="fecha_alta_relacion" Type="DateTime" Nullable="false" />
+          <Property Name="ultima_modificacion" Type="DateTime" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_rel_exp_estatus" FromRole="mym_rel_persona_exp_laboral" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_experiencia_laboral" Relationship="Self.fk_rel_exp_persona" FromRole="mym_rel_persona_exp_laboral" ToRole="mym_experiencia_laboral" />
+          <NavigationProperty Name="mym_persona" Relationship="Self.fk_rel_prsn_exp_lbrl" FromRole="mym_rel_persona_exp_laboral" ToRole="mym_persona" />
+        </EntityType>
+        <EntityType Name="mym_rel_persona_tipo_persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_persona" Type="Guid" Nullable="false" />
+          <Property Name="id_tipo_persona" Type="Int32" Nullable="false" />
+          <Property Name="fecha_alta_relacion" Type="DateTime" />
+          <Property Name="ultima_modificacion" Type="DateTime" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mym_cat_estatus" Relationship="Self.fk_rel_tipo_estatus" FromRole="mym_rel_persona_tipo_persona" ToRole="mym_cat_estatus" />
+          <NavigationProperty Name="mym_cat_tipo_persona" Relationship="Self.fk_rel_tipo_persona" FromRole="mym_rel_persona_tipo_persona" ToRole="mym_cat_tipo_persona" />
+          <NavigationProperty Name="mym_persona" Relationship="Self.fk_rel_persona" FromRole="mym_rel_persona_tipo_persona" ToRole="mym_persona" />
+        </EntityType>
+        <Association Name="fk_acdm_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_academia" Type="Self.mym_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_academia">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_acdm_tipo">
+          <End Role="mym_cat_tipo_academia" Type="Self.mym_cat_tipo_academia" Multiplicity="1" />
+          <End Role="mym_academia" Type="Self.mym_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_tipo_academia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_academia">
+              <PropertyRef Name="tipo_academia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_acdm_titulo">
+          <End Role="mym_cat_titulo" Type="Self.mym_cat_titulo" Multiplicity="1" />
+          <End Role="mym_academia" Type="Self.mym_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_titulo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_academia">
+              <PropertyRef Name="titulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_academia">
+          <End Role="mym_academia" Type="Self.mym_academia" Multiplicity="1" />
+          <End Role="mym_rel_persona_academia" Type="Self.mym_rel_persona_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_academia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_academia">
+              <PropertyRef Name="id_academia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_exp_empresa">
+          <End Role="mym_cat_empresa" Type="Self.mym_cat_empresa" Multiplicity="1" />
+          <End Role="mym_experiencia_laboral" Type="Self.mym_experiencia_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_empresa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_experiencia_laboral">
+              <PropertyRef Name="empresa_laboro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cdd_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_ciudad">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cmncn_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_comunicacion" Type="Self.mym_comunicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_comunicacion">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cp_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_codigo_postal">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estado_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_estado">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_exp_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_experiencia_laboral" Type="Self.mym_experiencia_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_experiencia_laboral">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mncp_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_municipio">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_acdm_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_rel_persona_academia" Type="Self.mym_rel_persona_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_academia">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_cmncn_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_rel_persona_comunicacion" Type="Self.mym_rel_persona_comunicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_comunicacion">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_drccn_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_rel_persona_direccion" Type="Self.mym_rel_persona_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_direccion">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_exp_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_rel_persona_exp_laboral" Type="Self.mym_rel_persona_exp_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_exp_laboral">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_tipo_estatus">
+          <End Role="mym_cat_estatus" Type="Self.mym_cat_estatus" Multiplicity="1" />
+          <End Role="mym_rel_persona_tipo_persona" Type="Self.mym_rel_persona_tipo_persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_estatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_tipo_persona">
+              <PropertyRef Name="estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_exp_puesto">
+          <End Role="mym_cat_puesto" Type="Self.mym_cat_puesto" Multiplicity="1" />
+          <End Role="mym_experiencia_laboral" Type="Self.mym_experiencia_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_puesto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_experiencia_laboral">
+              <PropertyRef Name="puesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cmncn_tipo">
+          <End Role="mym_cat_tipo_comunicacion" Type="Self.mym_cat_tipo_comunicacion" Multiplicity="1" />
+          <End Role="mym_comunicacion" Type="Self.mym_comunicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_tipo_comunicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_comunicacion">
+              <PropertyRef Name="tipo_comunicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_tipo">
+          <End Role="mym_cat_tipo_direccion" Type="Self.mym_cat_tipo_direccion" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_tipo_direccion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="tipo_direccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_tipo_persona">
+          <End Role="mym_cat_tipo_persona" Type="Self.mym_cat_tipo_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_tipo_persona" Type="Self.mym_rel_persona_tipo_persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_cat_tipo_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_tipo_persona">
+              <PropertyRef Name="id_tipo_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_comunicacion">
+          <End Role="mym_comunicacion" Type="Self.mym_comunicacion" Multiplicity="1" />
+          <End Role="mym_rel_persona_comunicacion" Type="Self.mym_rel_persona_comunicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_comunicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_comunicacion">
+              <PropertyRef Name="id_comunicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_ciudad">
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="id_ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_cp">
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_codigo_postal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="id_codigo_postal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_estado">
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_municipio">
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_municipio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="id_municipio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_drccn_pais">
+          <End Role="mym_geo_pais" Type="Self.mym_geo_pais" Multiplicity="1" />
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_direccion">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_prsn_direccion">
+          <End Role="mym_direccion" Type="Self.mym_direccion" Multiplicity="1" />
+          <End Role="mym_rel_persona_direccion" Type="Self.mym_rel_persona_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_direccion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_direccion">
+              <PropertyRef Name="id_direccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_exp_persona">
+          <End Role="mym_experiencia_laboral" Type="Self.mym_experiencia_laboral" Multiplicity="1" />
+          <End Role="mym_rel_persona_exp_laboral" Type="Self.mym_rel_persona_exp_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_experiencia_laboral">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_exp_laboral">
+              <PropertyRef Name="id_exp_laboral" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cdd_estado">
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="1" />
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_ciudad">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cdd_municipio">
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="1" />
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_municipio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_ciudad">
+              <PropertyRef Name="id_municipio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cdd_pais">
+          <End Role="mym_geo_pais" Type="Self.mym_geo_pais" Multiplicity="1" />
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_ciudad">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cp_ciudad">
+          <End Role="mym_geo_ciudad" Type="Self.mym_geo_ciudad" Multiplicity="1" />
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_codigo_postal">
+              <PropertyRef Name="id_ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cp_estado">
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="1" />
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_codigo_postal">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cp_municipio">
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="1" />
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_municipio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_codigo_postal">
+              <PropertyRef Name="id_municipio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_cp_pais">
+          <End Role="mym_geo_pais" Type="Self.mym_geo_pais" Multiplicity="1" />
+          <End Role="mym_geo_codigo_postal" Type="Self.mym_geo_codigo_postal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_codigo_postal">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estado_pais">
+          <End Role="mym_geo_pais" Type="Self.mym_geo_pais" Multiplicity="1" />
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_estado">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mncp_estado">
+          <End Role="mym_geo_estado" Type="Self.mym_geo_estado" Multiplicity="1" />
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_municipio">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_mncp_pais">
+          <End Role="mym_geo_pais" Type="Self.mym_geo_pais" Multiplicity="1" />
+          <End Role="mym_geo_municipio" Type="Self.mym_geo_municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_geo_pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_geo_municipio">
+              <PropertyRef Name="id_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_acdm_persona">
+          <End Role="mym_persona" Type="Self.mym_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_academia" Type="Self.mym_rel_persona_academia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_academia">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_cmncn_persona">
+          <End Role="mym_persona" Type="Self.mym_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_comunicacion" Type="Self.mym_rel_persona_comunicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_comunicacion">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_drccn_persona">
+          <End Role="mym_persona" Type="Self.mym_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_direccion" Type="Self.mym_rel_persona_direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_direccion">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_persona">
+          <End Role="mym_persona" Type="Self.mym_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_tipo_persona" Type="Self.mym_rel_persona_tipo_persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_tipo_persona">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rel_prsn_exp_lbrl">
+          <End Role="mym_persona" Type="Self.mym_persona" Multiplicity="1" />
+          <End Role="mym_rel_persona_exp_laboral" Type="Self.mym_rel_persona_exp_laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mym_persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mym_rel_persona_exp_laboral">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mymEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="mym_academia" EntityType="Self.mym_academia" />
+          <EntitySet Name="mym_cat_empresa" EntityType="Self.mym_cat_empresa" />
+          <EntitySet Name="mym_cat_estatus" EntityType="Self.mym_cat_estatus" />
+          <EntitySet Name="mym_cat_puesto" EntityType="Self.mym_cat_puesto" />
+          <EntitySet Name="mym_cat_tipo_academia" EntityType="Self.mym_cat_tipo_academia" />
+          <EntitySet Name="mym_cat_tipo_comunicacion" EntityType="Self.mym_cat_tipo_comunicacion" />
+          <EntitySet Name="mym_cat_tipo_direccion" EntityType="Self.mym_cat_tipo_direccion" />
+          <EntitySet Name="mym_cat_tipo_persona" EntityType="Self.mym_cat_tipo_persona" />
+          <EntitySet Name="mym_cat_titulo" EntityType="Self.mym_cat_titulo" />
+          <EntitySet Name="mym_comunicacion" EntityType="Self.mym_comunicacion" />
+          <EntitySet Name="mym_direccion" EntityType="Self.mym_direccion" />
+          <EntitySet Name="mym_experiencia_laboral" EntityType="Self.mym_experiencia_laboral" />
+          <EntitySet Name="mym_geo_ciudad" EntityType="Self.mym_geo_ciudad" />
+          <EntitySet Name="mym_geo_codigo_postal" EntityType="Self.mym_geo_codigo_postal" />
+          <EntitySet Name="mym_geo_estado" EntityType="Self.mym_geo_estado" />
+          <EntitySet Name="mym_geo_municipio" EntityType="Self.mym_geo_municipio" />
+          <EntitySet Name="mym_geo_pais" EntityType="Self.mym_geo_pais" />
+          <EntitySet Name="mym_persona" EntityType="Self.mym_persona" />
+          <EntitySet Name="mym_rel_persona_academia" EntityType="Self.mym_rel_persona_academia" />
+          <EntitySet Name="mym_rel_persona_comunicacion" EntityType="Self.mym_rel_persona_comunicacion" />
+          <EntitySet Name="mym_rel_persona_direccion" EntityType="Self.mym_rel_persona_direccion" />
+          <EntitySet Name="mym_rel_persona_exp_laboral" EntityType="Self.mym_rel_persona_exp_laboral" />
+          <EntitySet Name="mym_rel_persona_tipo_persona" EntityType="Self.mym_rel_persona_tipo_persona" />
+          <AssociationSet Name="fk_acdm_estatus" Association="Self.fk_acdm_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_academia" EntitySet="mym_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_acdm_tipo" Association="Self.fk_acdm_tipo">
+            <End Role="mym_cat_tipo_academia" EntitySet="mym_cat_tipo_academia" />
+            <End Role="mym_academia" EntitySet="mym_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_acdm_titulo" Association="Self.fk_acdm_titulo">
+            <End Role="mym_cat_titulo" EntitySet="mym_cat_titulo" />
+            <End Role="mym_academia" EntitySet="mym_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_academia" Association="Self.fk_rel_academia">
+            <End Role="mym_academia" EntitySet="mym_academia" />
+            <End Role="mym_rel_persona_academia" EntitySet="mym_rel_persona_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_exp_empresa" Association="Self.fk_exp_empresa">
+            <End Role="mym_cat_empresa" EntitySet="mym_cat_empresa" />
+            <End Role="mym_experiencia_laboral" EntitySet="mym_experiencia_laboral" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cdd_estatus" Association="Self.fk_cdd_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cmncn_estatus" Association="Self.fk_cmncn_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_comunicacion" EntitySet="mym_comunicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cp_estatus" Association="Self.fk_cp_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_estatus" Association="Self.fk_drccn_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estado_estatus" Association="Self.fk_estado_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_exp_estatus" Association="Self.fk_exp_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_experiencia_laboral" EntitySet="mym_experiencia_laboral" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mncp_estatus" Association="Self.fk_mncp_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_acdm_estatus" Association="Self.fk_rel_acdm_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_rel_persona_academia" EntitySet="mym_rel_persona_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_cmncn_estatus" Association="Self.fk_rel_cmncn_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_rel_persona_comunicacion" EntitySet="mym_rel_persona_comunicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_drccn_estatus" Association="Self.fk_rel_drccn_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_rel_persona_direccion" EntitySet="mym_rel_persona_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_exp_estatus" Association="Self.fk_rel_exp_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_rel_persona_exp_laboral" EntitySet="mym_rel_persona_exp_laboral" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_tipo_estatus" Association="Self.fk_rel_tipo_estatus">
+            <End Role="mym_cat_estatus" EntitySet="mym_cat_estatus" />
+            <End Role="mym_rel_persona_tipo_persona" EntitySet="mym_rel_persona_tipo_persona" />
+          </AssociationSet>
+          <AssociationSet Name="fk_exp_puesto" Association="Self.fk_exp_puesto">
+            <End Role="mym_cat_puesto" EntitySet="mym_cat_puesto" />
+            <End Role="mym_experiencia_laboral" EntitySet="mym_experiencia_laboral" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cmncn_tipo" Association="Self.fk_cmncn_tipo">
+            <End Role="mym_cat_tipo_comunicacion" EntitySet="mym_cat_tipo_comunicacion" />
+            <End Role="mym_comunicacion" EntitySet="mym_comunicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_tipo" Association="Self.fk_drccn_tipo">
+            <End Role="mym_cat_tipo_direccion" EntitySet="mym_cat_tipo_direccion" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_tipo_persona" Association="Self.fk_rel_tipo_persona">
+            <End Role="mym_cat_tipo_persona" EntitySet="mym_cat_tipo_persona" />
+            <End Role="mym_rel_persona_tipo_persona" EntitySet="mym_rel_persona_tipo_persona" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_comunicacion" Association="Self.fk_rel_comunicacion">
+            <End Role="mym_comunicacion" EntitySet="mym_comunicacion" />
+            <End Role="mym_rel_persona_comunicacion" EntitySet="mym_rel_persona_comunicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_ciudad" Association="Self.fk_drccn_ciudad">
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_cp" Association="Self.fk_drccn_cp">
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_estado" Association="Self.fk_drccn_estado">
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_municipio" Association="Self.fk_drccn_municipio">
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_drccn_pais" Association="Self.fk_drccn_pais">
+            <End Role="mym_geo_pais" EntitySet="mym_geo_pais" />
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_prsn_direccion" Association="Self.fk_rel_prsn_direccion">
+            <End Role="mym_direccion" EntitySet="mym_direccion" />
+            <End Role="mym_rel_persona_direccion" EntitySet="mym_rel_persona_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_exp_persona" Association="Self.fk_rel_exp_persona">
+            <End Role="mym_experiencia_laboral" EntitySet="mym_experiencia_laboral" />
+            <End Role="mym_rel_persona_exp_laboral" EntitySet="mym_rel_persona_exp_laboral" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cdd_estado" Association="Self.fk_cdd_estado">
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cdd_municipio" Association="Self.fk_cdd_municipio">
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cdd_pais" Association="Self.fk_cdd_pais">
+            <End Role="mym_geo_pais" EntitySet="mym_geo_pais" />
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cp_ciudad" Association="Self.fk_cp_ciudad">
+            <End Role="mym_geo_ciudad" EntitySet="mym_geo_ciudad" />
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cp_estado" Association="Self.fk_cp_estado">
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cp_municipio" Association="Self.fk_cp_municipio">
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cp_pais" Association="Self.fk_cp_pais">
+            <End Role="mym_geo_pais" EntitySet="mym_geo_pais" />
+            <End Role="mym_geo_codigo_postal" EntitySet="mym_geo_codigo_postal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estado_pais" Association="Self.fk_estado_pais">
+            <End Role="mym_geo_pais" EntitySet="mym_geo_pais" />
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mncp_estado" Association="Self.fk_mncp_estado">
+            <End Role="mym_geo_estado" EntitySet="mym_geo_estado" />
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_mncp_pais" Association="Self.fk_mncp_pais">
+            <End Role="mym_geo_pais" EntitySet="mym_geo_pais" />
+            <End Role="mym_geo_municipio" EntitySet="mym_geo_municipio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_acdm_persona" Association="Self.fk_rel_acdm_persona">
+            <End Role="mym_persona" EntitySet="mym_persona" />
+            <End Role="mym_rel_persona_academia" EntitySet="mym_rel_persona_academia" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_cmncn_persona" Association="Self.fk_rel_cmncn_persona">
+            <End Role="mym_persona" EntitySet="mym_persona" />
+            <End Role="mym_rel_persona_comunicacion" EntitySet="mym_rel_persona_comunicacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_drccn_persona" Association="Self.fk_rel_drccn_persona">
+            <End Role="mym_persona" EntitySet="mym_persona" />
+            <End Role="mym_rel_persona_direccion" EntitySet="mym_rel_persona_direccion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_persona" Association="Self.fk_rel_persona">
+            <End Role="mym_persona" EntitySet="mym_persona" />
+            <End Role="mym_rel_persona_tipo_persona" EntitySet="mym_rel_persona_tipo_persona" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rel_prsn_exp_lbrl" Association="Self.fk_rel_prsn_exp_lbrl">
+            <End Role="mym_persona" EntitySet="mym_persona" />
+            <End Role="mym_rel_persona_exp_laboral" EntitySet="mym_rel_persona_exp_laboral" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mymModelStoreContainer" CdmEntityContainer="mymEntities">
+          <EntitySetMapping Name="mym_academia">
+            <EntityTypeMapping TypeName="mymModel.mym_academia">
+              <MappingFragment StoreEntitySet="mym_academia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo_academia" ColumnName="tipo_academia" />
+                <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+                <ScalarProperty Name="fecha_egreso" ColumnName="fecha_egreso" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_cat_empresa">
+            <EntityTypeMapping TypeName="mymModel.mym_cat_empresa">
+              <MappingFragment StoreEntitySet="mym_cat_empresa">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="homologaciones" ColumnName="homologaciones" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_cat_estatus">
+            <EntityTypeMapping TypeName="mymModel.mym_cat_estatus">
+              <MappingFragment StoreEntitySet="mym_cat_estatus">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_cat_puesto">
+            <EntityTypeMapping TypeName="mymModel.mym_cat_puesto">
+              <MappingFragment StoreEntitySet="mym_cat_puesto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="puesto" ColumnName="puesto" />
+                <ScalarProperty Name="homologaciones" ColumnName="homologaciones" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_cat_tipo_academia">
+            <EntityTypeMapping TypeName="mymModel.mym_cat_tipo_academia">
+              <MappingFragment StoreEntitySet="mym_cat_tipo_academia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_cat_tipo_comunicacion">
+            <EntityTypeMapping TypeName="mymModel.mym_cat_tipo_comunicacion">
+              <MappingFragment StoreEntitySet="mym_cat_tipo_comunicacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_cat_tipo_direccion">
+            <EntityTypeMapping TypeName="mymModel.mym_cat_tipo_direccion">
+              <MappingFragment StoreEntitySet="mym_cat_tipo_direccion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_cat_tipo_persona">
+            <EntityTypeMapping TypeName="mymModel.mym_cat_tipo_persona">
+              <MappingFragment StoreEntitySet="mym_cat_tipo_persona">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_cat_titulo">
+            <EntityTypeMapping TypeName="mymModel.mym_cat_titulo">
+              <MappingFragment StoreEntitySet="mym_cat_titulo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_comunicacion">
+            <EntityTypeMapping TypeName="mymModel.mym_comunicacion">
+              <MappingFragment StoreEntitySet="mym_comunicacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo_comunicacion" ColumnName="tipo_comunicacion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_direccion">
+            <EntityTypeMapping TypeName="mymModel.mym_direccion">
+              <MappingFragment StoreEntitySet="mym_direccion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="id_municipio" ColumnName="id_municipio" />
+                <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+                <ScalarProperty Name="id_codigo_postal" ColumnName="id_codigo_postal" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="no_ext" ColumnName="no_ext" />
+                <ScalarProperty Name="no_int" ColumnName="no_int" />
+                <ScalarProperty Name="tipo_direccion" ColumnName="tipo_direccion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_experiencia_laboral">
+            <EntityTypeMapping TypeName="mymModel.mym_experiencia_laboral">
+              <MappingFragment StoreEntitySet="mym_experiencia_laboral">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="empresa_laboro" ColumnName="empresa_laboro" />
+                <ScalarProperty Name="puesto" ColumnName="puesto" />
+                <ScalarProperty Name="fecha_entrada" ColumnName="fecha_entrada" />
+                <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+                <ScalarProperty Name="sueldo_entrada" ColumnName="sueldo_entrada" />
+                <ScalarProperty Name="sueldo_salida" ColumnName="sueldo_salida" />
+                <ScalarProperty Name="descripcion_labores" ColumnName="descripcion_labores" />
+                <ScalarProperty Name="motivo_salida" ColumnName="motivo_salida" />
+                <ScalarProperty Name="telefono_empresa" ColumnName="telefono_empresa" />
+                <ScalarProperty Name="jefe_inmediato" ColumnName="jefe_inmediato" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_geo_ciudad">
+            <EntityTypeMapping TypeName="mymModel.mym_geo_ciudad">
+              <MappingFragment StoreEntitySet="mym_geo_ciudad">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="id_municipio" ColumnName="id_municipio" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="coordenadas" ColumnName="coordenadas" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_geo_codigo_postal">
+            <EntityTypeMapping TypeName="mymModel.mym_geo_codigo_postal">
+              <MappingFragment StoreEntitySet="mym_geo_codigo_postal">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="id_municipio" ColumnName="id_municipio" />
+                <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_geo_estado">
+            <EntityTypeMapping TypeName="mymModel.mym_geo_estado">
+              <MappingFragment StoreEntitySet="mym_geo_estado">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_geo_municipio">
+            <EntityTypeMapping TypeName="mymModel.mym_geo_municipio">
+              <MappingFragment StoreEntitySet="mym_geo_municipio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="coordenadas" ColumnName="coordenadas" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_geo_pais">
+            <EntityTypeMapping TypeName="mymModel.mym_geo_pais">
+              <MappingFragment StoreEntitySet="mym_geo_pais">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="coordenadas" ColumnName="coordenadas" />
+                <ScalarProperty Name="region_geografica" ColumnName="region_geografica" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_persona">
+            <EntityTypeMapping TypeName="mymModel.mym_persona">
+              <MappingFragment StoreEntitySet="mym_persona">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido_paterno" ColumnName="apellido_paterno" />
+                <ScalarProperty Name="apellido_materno" ColumnName="apellido_materno" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="rfc" ColumnName="rfc" />
+                <ScalarProperty Name="curp" ColumnName="curp" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="ultima_modificacion" ColumnName="ultima_modificacion" />
+                <ScalarProperty Name="url_fotografia" ColumnName="url_fotografia" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_rel_persona_academia">
+            <EntityTypeMapping TypeName="mymModel.mym_rel_persona_academia">
+              <MappingFragment StoreEntitySet="mym_rel_persona_academia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="id_academia" ColumnName="id_academia" />
+                <ScalarProperty Name="fecha_alta_relacion" ColumnName="fecha_alta_relacion" />
+                <ScalarProperty Name="ultima_modificacion" ColumnName="ultima_modificacion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_rel_persona_comunicacion">
+            <EntityTypeMapping TypeName="mymModel.mym_rel_persona_comunicacion">
+              <MappingFragment StoreEntitySet="mym_rel_persona_comunicacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="id_comunicacion" ColumnName="id_comunicacion" />
+                <ScalarProperty Name="fecha_alta_relacion" ColumnName="fecha_alta_relacion" />
+                <ScalarProperty Name="ultima_modificacion" ColumnName="ultima_modificacion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_rel_persona_direccion">
+            <EntityTypeMapping TypeName="mymModel.mym_rel_persona_direccion">
+              <MappingFragment StoreEntitySet="mym_rel_persona_direccion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="id_direccion" ColumnName="id_direccion" />
+                <ScalarProperty Name="fecha_alta_relacion" ColumnName="fecha_alta_relacion" />
+                <ScalarProperty Name="ultima_modificacion" ColumnName="ultima_modificacion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_rel_persona_exp_laboral">
+            <EntityTypeMapping TypeName="mymModel.mym_rel_persona_exp_laboral">
+              <MappingFragment StoreEntitySet="mym_rel_persona_exp_laboral">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="id_exp_laboral" ColumnName="id_exp_laboral" />
+                <ScalarProperty Name="fecha_alta_relacion" ColumnName="fecha_alta_relacion" />
+                <ScalarProperty Name="ultima_modificacion" ColumnName="ultima_modificacion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mym_rel_persona_tipo_persona">
+            <EntityTypeMapping TypeName="mymModel.mym_rel_persona_tipo_persona">
+              <MappingFragment StoreEntitySet="mym_rel_persona_tipo_persona">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="id_tipo_persona" ColumnName="id_tipo_persona" />
+                <ScalarProperty Name="fecha_alta_relacion" ColumnName="fecha_alta_relacion" />
+                <ScalarProperty Name="ultima_modificacion" ColumnName="ultima_modificacion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
