@@ -53,6 +53,7 @@ namespace MyMUtileriasGenericas.Seguridad
             }
             catch (Exception e)
             {
+                log.Error("error en ObtienePassword.", e);
                 throw e;
             }
             return resultado;
@@ -123,6 +124,7 @@ namespace MyMUtileriasGenericas.Seguridad
             }
             catch (Exception e)
             {
+                log.Error("error en CifraTextoEnDES.", e);
                 throw e;
             }
             return resultado;
@@ -150,6 +152,7 @@ namespace MyMUtileriasGenericas.Seguridad
             }
             catch (Exception e)
             {
+                log.Error("error en DescifraTextoDES.", e);
                 throw e;
             }
             return resultado;
@@ -181,6 +184,7 @@ namespace MyMUtileriasGenericas.Seguridad
             }
             catch (Exception e)
             {
+                log.Error("error en DescifraTextoDES.", e);
                 throw e;
             }
             return resultado;
@@ -207,6 +211,7 @@ namespace MyMUtileriasGenericas.Seguridad
                 resultado = sb.ToString();            }
             catch (Exception e)
             {
+                log.Error("error en FormatoHexadecimal.", e);
                 throw e;
             }
             return resultado;
@@ -240,6 +245,7 @@ namespace MyMUtileriasGenericas.Seguridad
             }
             catch (Exception e)
             {
+                log.Error("error en DesformateaHexadecimal.", e);
                 throw e;
             }
             return resultado;

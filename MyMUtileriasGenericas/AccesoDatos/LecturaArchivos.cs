@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace MyMUtileriasGenericas.AccesoDatos
     /// </remarks>
     public static class LecturaArchivos
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(LecturaArchivos));
+
         /// <summary>
         /// Método que lee el contenido de un 
         /// archivo plano línea por línea
@@ -25,6 +28,9 @@ namespace MyMUtileriasGenericas.AccesoDatos
         /// <returns>Lista de strings con el contenido del archivo</returns>
         public static List<string> LeeArchivoLineaPorLinea(string rutaArchivo)
         {
+            log.Info("Ingresa a LeeArchivoLineaPorLinea");
+            log.Info("Ruta de archivo proporcionada:");
+            log.Info(rutaArchivo);
             List<string> lineas = new List<string>();
             try
             {
@@ -36,6 +42,7 @@ namespace MyMUtileriasGenericas.AccesoDatos
             }
             catch (Exception e)
             {
+                log.Error("error en LeeArchivoLineaPorLinea.", e);
                 throw e;
             }
             return lineas;

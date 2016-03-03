@@ -1,10 +1,13 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO.Compression;
+using System.Configuration;
 
 namespace MyMUtileriasGenericas.Refactor
 {
@@ -22,6 +25,7 @@ namespace MyMUtileriasGenericas.Refactor
         public static string smtpAdress = string.Empty;
         public static int portNumber = 0;
         public static bool enableSSL = true;
+        private static readonly ILog log = LogManager.GetLogger(typeof(Multimedia));
 
         /// <summary>
         /// Método que envia correos electrónicos
@@ -36,7 +40,7 @@ namespace MyMUtileriasGenericas.Refactor
         {
             try
             {
-                using (MailMessage mail= new MailMessage())
+                using (MailMessage mail = new MailMessage())
                 {
                     mail.From = new MailAddress(correoDe);
                     foreach (string correoDestino in correoPara)
@@ -56,6 +60,7 @@ namespace MyMUtileriasGenericas.Refactor
             }
             catch (Exception e)
             {
+                log.Error("Error en el método EnviaCorreo.", e);
                 throw new Exception("Error al enviar el correo electrónico: " + e.Message);
             }
         }
@@ -67,13 +72,20 @@ namespace MyMUtileriasGenericas.Refactor
         public static string ComprimeArchivos(params string[] archivos)
         {
             string rutaArchivoComprimido = string.Empty;
-
             try
             {
-
+                rutaArchivoComprimido = ConfigurationManager.AppSettings["RutaTempZip"].ToString();
+                using (ZipArchive modFile = ZipFile.Open(string.Empty, ZipArchiveMode.Create))
+                {
+                    foreach (string archivo in archivos)
+                    {
+                        modFile.CreateEntryFromFile(archivo, string.Empty,CompressionLevel.Optimal);
+                    }
+                }
             }
             catch (Exception e)
             {
+                log.Error("Error en el método ComprimeArchivos.", e);
                 throw e;
             }
 

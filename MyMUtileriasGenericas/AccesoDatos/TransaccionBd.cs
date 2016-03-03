@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace MyMUtileriasGenericas.AccesoDatos
     public class TransaccionBd
     {
         private TransactionScope transaccion;
+        private static readonly ILog log = LogManager.GetLogger(typeof(TransaccionBd));
 
         /// <summary>
         /// Método Constructor
@@ -54,6 +56,7 @@ namespace MyMUtileriasGenericas.AccesoDatos
             }
             catch (Exception ex)
             {
+                log.Error("Ocurrió un error en EvaluaTIpoOperacion.", ex);
                 throw ex;
             }
         }
