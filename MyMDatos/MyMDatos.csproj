@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CRUD\MySQL\MymInfo\CrudAbstractMymInfo.cs" />
     <Compile Include="CRUD\MySQL\MymInfo\FactoryCrudMymInfo.cs" />
     <Compile Include="CRUD\MySQL\MymInfo\ImplCrudMymPersona.cs" />
     <Compile Include="ORM\ForMySQL\ModelMyM.Context.cs">
