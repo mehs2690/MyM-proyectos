@@ -49,6 +49,13 @@ section{
     color:#383838;
 }
 
+.section-flowers{
+    background-image: url("../content/imgs/IMG_20160311_155535639.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+}
+
 .section-lightBlue{
     background-color: #6adaff;
     color:#004782;

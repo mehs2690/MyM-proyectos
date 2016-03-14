@@ -19,7 +19,11 @@ namespace MyMDatos.ORM.ForMySQL
             : base("name=mymEntities")
         {
         }
-    
+
+        public mymEntities(string CadenaConexionMySQL) : base(CadenaConexionMySQL)
+        {
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

@@ -175,6 +175,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\imgs\coffee-laptop.jpg" />
     <Content Include="Content\imgs\favicon.ico" />
+    <Content Include="Content\imgs\IMG_20160311_155535639.jpg" />
     <Content Include="Content\imgs\logoIconoMym.fw.png" />
     <Content Include="Content\imgs\logoMym_ver3.fw.png" />
     <Content Include="Content\imgs\logoMym_ver3Blanco.fw.png" />
@@ -240,7 +241,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Models\ModelBusiness\" />
+    <Folder Include="Models\ModelViews\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
