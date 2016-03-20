@@ -135,10 +135,10 @@ namespace MyMUtileriasGenericas.AccesoDatos
                 cadenaConfig = ConfigurationManager.ConnectionStrings[cadenaConexion].ConnectionString;
                 if (cifrado)
                 {
-                    Conexion.server = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings[server]);
-                    Conexion.bd = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings[bd]);
-                    Conexion.user = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings[user]);
-                    Conexion.pwd = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings[pwd]);
+                    Conexion.server = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings[server]));
+                    Conexion.bd = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings[bd]));
+                    Conexion.user = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings[user]));
+                    Conexion.pwd = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings[pwd]));
                 }
                 else
                 {
