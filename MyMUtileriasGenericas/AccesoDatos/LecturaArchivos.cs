@@ -47,5 +47,36 @@ namespace MyMUtileriasGenericas.AccesoDatos
             }
             return lineas;
         }
+
+        /// <summary>
+        /// método encargado de crear archivos planos
+        /// </summary>
+        /// <param name="contenido"></param>
+        /// <param name="ruta"></param>
+        /// <param name="nombreArchivo"></param>
+        /// <param name="extensionArchivo"></param>
+        /// <returns></returns>
+        public static string CreaArchivo(List<string> contenido,string ruta,string nombreArchivo,string extensionArchivo)
+        {
+            log.Info("Ingresa al método CreaArchivo");
+            log.Info(string.Format("contenido: {0}; nombre del archivo: {1}; extensión del archivo: {2};",
+                                    contenido,
+                                    nombreArchivo,
+                                    extensionArchivo));
+            string rutaArchivo = string.Empty;
+            try
+            {
+                foreach (string cadena in contenido)
+                {
+
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error("error al crear un archivo", e);
+                throw e;
+            }
+            return rutaArchivo;
+        }
     }
 }
