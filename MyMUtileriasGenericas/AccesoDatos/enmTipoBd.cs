@@ -10,6 +10,10 @@ namespace MyMUtileriasGenericas.AccesoDatos
     /// Enumerador para obtener
     /// la base de datos a usar
     /// </summary>
+    /// <remarks>
+    /// Creado por: T.P. Mauro Etzael Henaro Sánchez
+    /// Version: 23.12.2015
+    /// </remarks>
     public enum enmTipoBd
     {
         /// <summary>

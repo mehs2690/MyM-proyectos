@@ -51,10 +51,10 @@ namespace MyMUtileriasGenericas.AccesoDatos
         /// <summary>
         /// método encargado de crear archivos planos
         /// </summary>
-        /// <param name="contenido"></param>
-        /// <param name="ruta"></param>
-        /// <param name="nombreArchivo"></param>
-        /// <param name="extensionArchivo"></param>
+        /// <param name="contenido">contenido del archivo en cadena de caracteres</param>
+        /// <param name="ruta">ruta donde se va a crear el archivo</param>
+        /// <param name="nombreArchivo">nombre del archivo</param>
+        /// <param name="extensionArchivo">extensión del archivo a ser creado</param>
         /// <returns></returns>
         public static string CreaArchivo(List<string> contenido,string ruta,string nombreArchivo,string extensionArchivo)
         {
@@ -66,9 +66,11 @@ namespace MyMUtileriasGenericas.AccesoDatos
             string rutaArchivo = string.Empty;
             try
             {
-                foreach (string cadena in contenido)
+                string fullPath = Path.Combine(ruta, (nombreArchivo + extensionArchivo));
+                using (StreamWriter file= new StreamWriter(fullPath))
                 {
-
+                    foreach (string cadena in contenido)
+                        file.WriteLine(cadena);
                 }
             }
             catch (Exception e)
