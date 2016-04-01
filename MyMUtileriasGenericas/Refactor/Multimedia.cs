@@ -22,8 +22,17 @@ namespace MyMUtileriasGenericas.Refactor
     /// </remarks>
     public static class Multimedia
     {
+        /// <summary>
+        /// Direccion del servicio SMTP
+        /// </summary>
         public static string smtpAdress = string.Empty;
+        /// <summary>
+        /// Número del puerto
+        /// </summary>
         public static int portNumber = 0;
+        /// <summary>
+        /// Establece si se utiliza SSL
+        /// </summary>
         public static bool enableSSL = true;
         private static readonly ILog log = LogManager.GetLogger(typeof(Multimedia));
 
