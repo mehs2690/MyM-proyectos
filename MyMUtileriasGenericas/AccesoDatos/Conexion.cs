@@ -49,10 +49,10 @@ namespace MyMUtileriasGenericas.AccesoDatos
                 cadenaConfig = ConfigurationManager.ConnectionStrings[llave].ConnectionString;
                 if (cifrado)
                 {
-                    server = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings["Server"]);
-                    bd = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings["Bd"]);
-                    user = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings["Usr"]);
-                    pwd = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings["Pwd"]);
+                    server = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings["Server"]));
+                    bd = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings["Bd"]));
+                    user = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings["Usr"]));
+                    pwd = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings["Pwd"]));
                 }
                 else
                 {
@@ -90,10 +90,10 @@ namespace MyMUtileriasGenericas.AccesoDatos
                 {
                     if (!string.IsNullOrEmpty(password))
                     {
-                        server = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings["Server"], password);
-                        bd = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings["Bd"], password);
-                        user = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings["Usr"], password);
-                        pwd = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings["Pwd"], password);
+                        server = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings["Server"]), password);
+                        bd = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings["Bd"]), password);
+                        user = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings["Usr"]), password);
+                        pwd = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings["Pwd"]), password);
                     }
                     else
                         throw new ArgumentNullException("el password no puedo ser nulo o vacío");
@@ -180,10 +180,10 @@ namespace MyMUtileriasGenericas.AccesoDatos
                 {
                     if (!string.IsNullOrEmpty(password))
                     {
-                        Conexion.server = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings[server], password);
-                        Conexion.bd = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings[bd], password);
-                        Conexion.user = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings[user], password);
-                        Conexion.pwd = ProcesaDatosCD.DescifraTextoDES(ConfigurationManager.AppSettings[pwd], password);
+                        Conexion.server = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings[server]), password);
+                        Conexion.bd = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings[bd]), password);
+                        Conexion.user = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings[user]), password);
+                        Conexion.pwd = ProcesaDatosCD.DescifraTextoDES(ProcesaDatosCD.DesformateaHexadecimal(ConfigurationManager.AppSettings[pwd]), password);
                     }
                     else
                         throw new ArgumentNullException("el password no puedo ser nulo o vacío");
