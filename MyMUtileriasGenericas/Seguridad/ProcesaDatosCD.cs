@@ -23,8 +23,17 @@ namespace MyMUtileriasGenericas.Seguridad
         private const string PASSWORDHASH = "P@@Sw0rd";
         private const string SALTKEY = "S@LT_KEY";
         private const string VIKEY = "@1B2c3D4e5F6g7H8";
-        private static byte[] bytes = ASCIIEncoding.ASCII.GetBytes("megaloma");
+        private static byte[] bytes = Encoding.ASCII.GetBytes("megaloma");
         private static readonly ILog log = LogManager.GetLogger(typeof(ProcesaDatosCD));
+        private static MD5 md5Hasher;
+
+        private static string toHexString(byte[] bArregloBytes)
+        {
+            string resultado = string.Empty;
+            foreach (byte iByte in bArregloBytes)
+                resultado += string.Format("{0:X}", iByte);
+            return resultado;
+        }
 
         /// <summary>
         /// Método que digiere la cadena de caracteres
@@ -249,6 +258,35 @@ namespace MyMUtileriasGenericas.Seguridad
                 throw e;
             }
             return resultado;
+        }
+
+        /// <summary>
+        /// Método para cifrar cadenas
+        /// </summary>
+        /// <param name="aProcesar">texto a cifrar</param>
+        /// <returns>texto cifrado</returns>
+        public static string GetHashMd5(string aProcesar)
+        {
+            string valor = string.Empty;
+            md5Hasher = MD5.Create();
+            valor = toHexString(md5Hasher.ComputeHash(Encoding.UTF8.GetBytes(aProcesar)));
+            return valor;
+        }
+
+        /// <summary>
+        /// Valida si dos cadenas Hash MD5
+        /// son identicas
+        /// </summary>
+        /// <param name="origenBd">cadena Hash MD5 procedente de la Bd</param>
+        /// <param name="origenLogin">cadena Hash MD5 procedente del form login</param>
+        /// <returns>validación de las cadenas</returns>
+        public static bool ValidaHashMd5(string origenBd,string origenLogin)
+        {
+            StringComparer comparador = StringComparer.OrdinalIgnoreCase;
+            if (0 == comparador.Compare(origenLogin, origenBd))
+                return true;
+            else
+                return false;
         }
     }
 }

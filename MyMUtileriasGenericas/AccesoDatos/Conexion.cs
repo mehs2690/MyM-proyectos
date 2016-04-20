@@ -214,8 +214,9 @@ namespace MyMUtileriasGenericas.AccesoDatos
         /// <param name="cadenaConexion">llave de la cadena de conexión a usar</param>
         /// <param name="cifrado">establece si los valores están cifrados</param>
         /// <param name="tipoBD">tipo de de origen de BD</param>
+        /// <param name="modelMetaData">cadena que representa el nombre del edmx creado con EntityFramework DataBase First</param>
         /// <returns>cadena de conexión armada</returns>
-        public static string ObtieneCadenaEF(string cadenaConexion,bool cifrado,enmTipoBd tipoBD)
+        public static string ObtieneCadenaEF(string cadenaConexion,bool cifrado,enmTipoBd tipoBD,string modelMetaData)
         {
             EntityConnectionStringBuilder ecb = new EntityConnectionStringBuilder();
             try
@@ -226,7 +227,7 @@ namespace MyMUtileriasGenericas.AccesoDatos
                 switch (tipoBD)
                 {
                     case enmTipoBd.MSSQL:
-                        ecb.Metadata = "res://*/MSSQL.MymConfigEf.BDMym.csdl|res://*/MSSQL.MymConfigEf.BDMym.ssdl|res://*/MSSQL.MymConfigEf.BDMym.msl";
+                        ecb.Metadata = string.Format("res://*/{0}.csdl|res://*/{0}.ssdl|res://*/{0}.msl", modelMetaData);
                         ecb.Provider = "System.Data.SqlClient";
                         mssqlsbc = new SqlConnectionStringBuilder(cadenaConfig);
                         ecb.ProviderConnectionString = mssqlsbc.ConnectionString;
@@ -234,7 +235,7 @@ namespace MyMUtileriasGenericas.AccesoDatos
                     case enmTipoBd.ORACLE:
                         throw new NotImplementedException("las clases para la BD Oracle aún no han sido implementados");
                     case enmTipoBd.MYSQL:
-                        ecb.Metadata = "res://*/MySQL.MymEf.EventoSocial.csdl|res://*/MySQL.MymEf.EventoSocial.ssdl|res://*/MySQL.MymEf.EventoSocial.msl";
+                        ecb.Metadata = string.Format("res://*/{0}.csdl|res://*/{0}.ssdl|res://*/{0}.msl", modelMetaData);
                         ecb.Provider = "MySql.Data.MySqlClient";
                         mysqlsbc = new MySqlConnectionStringBuilder(cadenaConfig);
                         ecb.ProviderConnectionString = mysqlsbc.ConnectionString;
@@ -246,7 +247,7 @@ namespace MyMUtileriasGenericas.AccesoDatos
                     case enmTipoBd.MONGOBD:
                         throw new NotImplementedException("las clases para la BD Mongo aún no han sido implementados");
                     default:
-                        ecb.Metadata = "res://*/MSSQL.MymConfigEf.BDMym.csdl|res://*/MSSQL.MymConfigEf.BDMym.ssdl|res://*/MSSQL.MymConfigEf.BDMym.msl";
+                        ecb.Metadata = string.Format("res://*/{0}.csdl|res://*/{0}.ssdl|res://*/{0}.msl", modelMetaData);
                         ecb.Provider = "System.Data.SqlClient";
                         mssqlsbc = new SqlConnectionStringBuilder(cadenaConfig);
                         ecb.ProviderConnectionString = mssqlsbc.ConnectionString;
