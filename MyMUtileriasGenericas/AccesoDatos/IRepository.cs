@@ -7,28 +7,28 @@ using System.Threading.Tasks;
 namespace MyMUtileriasGenericas.AccesoDatos
 {
     /// <summary>
-    /// Interfaz que implementa la estructura CRUD
-    /// para las operaciones de acceso a datos
+    /// 
     /// </summary>
-    /// <remarks>
-    /// Creado por: T.P. Mauro Etzael Henaro Sánchez
-    /// Version: 24.12.2015
-    /// </remarks>
-    public interface ICrud
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="O"></typeparam>
+    public interface IRepository<T,O>
     {
         /// <summary>
         /// 
         /// </summary>
-        void Create();
+        /// <param name="entity"></param>
+        void Create(T entity);
 
         /// <summary>
         /// 
         /// </summary>
-        void Update();
+        /// <param name="identifier"></param>
+        void Update(O identifier);
 
         /// <summary>
         /// 
         /// </summary>
-        void Delete();
+        /// <param name="identifier"></param>
+        void Delete(O identifier);
     }
 }
