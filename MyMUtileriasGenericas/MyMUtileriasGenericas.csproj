@@ -97,10 +97,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesoDatos\AbstractRepository.cs" />
     <Compile Include="AccesoDatos\Conexion.cs" />
     <Compile Include="AccesoDatos\enmTipoBd.cs" />
     <Compile Include="AccesoDatos\enmTipoTransaccion.cs" />
     <Compile Include="AccesoDatos\ICrud.cs" />
+    <Compile Include="AccesoDatos\IRepository.cs" />
     <Compile Include="AccesoDatos\LecturaArchivos.cs" />
     <Compile Include="AccesoDatos\TransaccionBd.cs" />
     <Compile Include="AccesoDatos\TransaccionGenerica.cs" />
