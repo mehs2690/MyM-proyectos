@@ -1,0 +1,90 @@
+﻿using log4net;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Transactions;
+
+namespace MymCoreCommon.DataAccess
+{
+    /// <summary>
+    /// Clase encargada de generar una transacción 
+    /// hacia un origen de datos y ejecutar las operaciones 
+    /// que se le asignen
+    /// </summary>
+    /// <remarks>
+    /// Creado por: T.P. Mauro Etzael Henaro Sánchez
+    /// Version: 24.12.2015
+    /// </remarks>
+    public class TransaccionBd
+    {
+        private TransactionScope transaccion;
+        private static readonly ILog log = LogManager.GetLogger(typeof(TransaccionBd));
+
+        /// <summary>
+        /// Método Constructor
+        /// </summary>
+        /// <param name="transaccion">instancia del objeto TransactionScope</param>
+        public TransaccionBd(TransactionScope transaccion)
+        {
+            this.transaccion = transaccion;
+        }
+
+        private void EvaluaTipoOperacion(TransaccionGenerica transaccion)
+        {
+            try
+            {
+                switch (transaccion.TipoTransaccion)
+                {
+                    case enmTipoTransaccion.INSERT:
+                        transaccion.Operacion.Create();
+                        break;
+                    case enmTipoTransaccion.UPDATE:
+                        transaccion.Operacion.Update();
+                        break;
+                    case enmTipoTransaccion.DELETE:
+                        transaccion.Operacion.Delete();
+                        break;
+                    default:
+                        throw new InvalidCastException("El tipo de operación no es válido");
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("Ocurrió un error en EvaluaTIpoOperacion.", ex);
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Método que ejecuta las operaciones CRUD 
+        /// dentro de una transacción de origen de datos
+        /// </summary>
+        /// <param name="operaciones">lista de objetos de la transaccion genérica</param>
+        public void EjecutaOperacionesEnTransaccion(List<TransaccionGenerica> operaciones)
+        {
+            using (transaccion=new TransactionScope())
+            {
+                foreach (TransaccionGenerica t in operaciones)
+                    EvaluaTipoOperacion(t);
+            }
+        }
+
+        /// <summary>
+        /// Realiza la operación CRUD dentro de una transacción
+        /// </summary>
+        /// <param name="operacion">objeto genérico para las transacciones</param>
+        public void EjecutaOperacionEnTransaccion(TransaccionGenerica operacion)
+        {
+            try
+            {
+                EvaluaTipoOperacion(operacion);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+    }
+}

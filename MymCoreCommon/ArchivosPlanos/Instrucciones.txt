@@ -1,0 +1,47 @@
+﻿Instrucciones de uso del ejecutable de utilerias de las aplicaciones de MyM.
+Ingrese la acción a realizar después del ejecutable, ejemplo: 
+
+"MyMUtileriasGenericas.exe ayuda"
+
+Una vez haya ingresado la acción a realizar, se visualizará el menú de opciones que contiene.
+
+--------------------------------------------
+--------------------------------------------
+
+INSTRUCCIONES PARA PROCESAR CADENAS CON MD5:
+
+Para la utilización de MD5 con el ejecutable debe colocar algo parecido como lo siguiente:
+
+"MyMUtileriasGenericas.exe cifrado_md5 textoPrueba;etzael"
+
+donde, "textoPrueba" se refiere al nombre del campo o propiedad que será cifrado, "etzael"
+especifica el valor que será cifrado. Se pueden cifrar varias palabras a la vez sólo se 
+tiene que colocar de la siguiente manera:
+
+"MyMUtileriasGenericas.exe cifrado_md5 campo1;valor1 campo2;valor2 campo3;valor3 ... campoN;valorN "
+
+--------------------------------------------
+--------------------------------------------
+
+INSTRUCCIONES PARA EL CIFRADO Y DESCIFRADO CON DES
+
+para la utilización del cifrado y descifrado con DES, se debe de colocar 
+la siguiente forma del ejecutable:
+
+".exe cifrado_des etzael"  ----> (sin password)
+".exe cifrado_des etzael P4ssw0rd"  ----> (con password)
+
+las características del password son las siguientes:
+
+1.- debe de tener una longitud de 8 caracteres
+2.- debe de contener al letras y números
+3.- debe de contener al menos una letra mayúscula
+4.- evitar el uso de caracteres especiales (#$%&/~*)
+
+Para descifrar el texto se debe de colocar lo siguiente: 
+
+".exe descifrado_des 0LCoa/dVx/o="  ----> (sin password)
+".exe descifrado_des 0LCoa/dVx/o= P4ssw0rd"  ----> (con password)
+
+--------------------------------------------
+--------------------------------------------
