@@ -43,11 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchivosPlanos\MymFileTextNotFoundException.cs" />
+    <Compile Include="DataAccess\MymConnectionException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Refactor\MymSendMailException.cs" />
+    <Compile Include="Seguridad\MymEncryptDataException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
